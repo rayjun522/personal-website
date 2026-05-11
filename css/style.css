@@ -224,7 +224,8 @@ img {
 }
 
 .hero-name {
-  font-size: clamp(44px, 7vw, 80px);
+  font-family: "SimSun", "宋体", serif;
+  font-size: clamp(29px, 4.7vw, 53px);
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.03em;
