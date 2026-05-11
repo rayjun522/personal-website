@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "node build.js"
+    "build": "node build.js",
+    "deploy": "node build.js && git add docs/ assets/ css/ js/ index.html && git commit -m"
   },
   "devDependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
