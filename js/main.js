@@ -102,7 +102,7 @@
   navLinks.forEach(function (link) {
     var href = link.getAttribute('href');
     if (href && href.startsWith('#')) {
-      var el = document.querySelector(href);
+      var el = document.getElementById(href.replace('#', ''));
       if (el && homeSections.indexOf(href.replace('#', '')) !== -1) {
         sections.push({ link: link, section: el });
       }
@@ -170,6 +170,19 @@
 
   document.querySelectorAll('.animate').forEach(function (el) { observer.observe(el); });
   document.querySelectorAll('.animate-stagger').forEach(function (el) { observer.observe(el); });
+
+  // Safety net: force visible after 2s in case IO never fires
+  setTimeout(function () {
+    document.querySelectorAll('.animate:not(.visible)').forEach(function (el) { el.classList.add('visible'); });
+    document.querySelectorAll('.animate-stagger:not(.visible)').forEach(function (el) {
+      el.classList.add('visible');
+      var kids = el.children;
+      for (var i = 0; i < kids.length; i++) {
+        kids[i].style.opacity = '1';
+        kids[i].style.transform = 'translateY(0)';
+      }
+    });
+  }, 2000);
 
   // ===== Lightbox =====
   var lightbox = document.getElementById('lightbox');
