@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "build": "node build.js",
-    "deploy": "node build.js && git add docs/ assets/ css/ js/ index.html && git commit -m"
+    "deploy": "node build.js && git add docs/ assets/ css/ js/ index.html && git commit -m",
+    "deploy:netlify": "node build.js && netlify deploy --dir=docs --prod"
   },
   "devDependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
