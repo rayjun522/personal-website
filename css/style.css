@@ -224,8 +224,7 @@ img {
 }
 
 .hero-name {
-  font-family: "Lantinghei SC", "兰亭黑", "PingFang SC", "Microsoft YaHei", sans-serif;
-  font-size: clamp(29px, 4.7vw, 53px);
+  font-size: clamp(36px, 5.5vw, 64px);
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.03em;
