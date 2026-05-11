@@ -6,16 +6,17 @@
   var menuToggle = document.getElementById('menuToggle');
   var navLinks = document.querySelectorAll('.nav-link');
 
-  // ===== Page routing =====
+  // ===== Page routing (with encoded hash URLs) =====
   var homeSections = ['hero', 'about', 'projects', 'contact'];
   var subPages = ['blog', 'project1', 'project2', 'project3'];
-  var allPages = homeSections.concat(subPages);
+  var hashCodes = { '6k': 'blog', '7m': 'project1', '8n': 'project2', '9p': 'project3' };
+  var pageToHash = { home: '' };
+  for (var k in hashCodes) { pageToHash[hashCodes[k]] = k; }
 
   function getCurrentPage() {
     var hash = window.location.hash.replace('#', '');
     if (!hash || homeSections.indexOf(hash) !== -1) return 'home';
-    if (subPages.indexOf(hash) !== -1) return hash;
-    return 'home';
+    return hashCodes[hash] || 'home';
   }
 
   function showPage(name) {
@@ -82,7 +83,7 @@
       }
     } else {
       showPage(page);
-      window.location.hash = page;
+      window.location.hash = pageToHash[page] || page;
     }
     e.preventDefault();
   });
