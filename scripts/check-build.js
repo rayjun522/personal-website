@@ -14,7 +14,12 @@ async function main() {
   const tags = (html.match(/<img\b[^>]*>/g) || []).map(attributes);
   const gallery = tags.filter(tag => tag['data-full']);
   assert.equal(gallery.length, sourceCount, 'Every gallery photo needs a preview and full-size image');
-  assert(tags.filter(tag => tag.src?.startsWith('assets/')).every(tag => tag.loading === 'lazy'));
+  const immediate = tags.filter(tag => tag.src?.startsWith('assets/'));
+  const hero = immediate.filter(tag => /\bhero-photo\b/.test(tag.class || ''));
+  assert.equal(hero.length, 1, 'The homepage needs exactly one priority hero image');
+  assert.equal(hero[0].loading, 'eager');
+  assert.equal(hero[0].fetchpriority, 'high');
+  assert(immediate.filter(tag => tag !== hero[0]).every(tag => tag.loading === 'lazy'));
   const files = new Map();
   function imageFile(url) {
     assert(url.startsWith('assets/optimized/') && url.endsWith('.webp'), 'Only generated images should be referenced');
