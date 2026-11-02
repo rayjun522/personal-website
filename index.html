@@ -9,21 +9,17 @@
 </head>
 <body>
 
-  <div class="bg-orbs">
-    <div class="bg-orb bg-orb--1"></div>
-    <div class="bg-orb bg-orb--2"></div>
-    <div class="bg-orb bg-orb--3"></div>
-  </div>
-
   <header class="header" id="header">
     <div class="container header-inner">
-      <a href="#" class="logo js-nav" data-page="home">小布</a>
+      <a href="#" class="logo js-nav" data-page="home">
+        <span class="logo-name">雷其军</span>
+        <span class="logo-subtitle">Landscape Works</span>
+      </a>
       <nav class="nav" id="nav">
         <ul class="nav-list">
-          <li><a href="#about" class="nav-link js-nav" data-page="home">关于</a></li>
-          <li><a href="#6k" class="nav-link js-nav" data-page="blog">博客</a></li>
-          <li><a href="#projects" class="nav-link js-nav" data-page="home">项目</a></li>
-          <li><a href="#contact" class="nav-link js-nav" data-page="home">联系</a></li>
+          <li><a href="#about" class="nav-link js-nav" data-page="home">关于我</a></li>
+          <li><a href="#projects" class="nav-link js-nav" data-page="home">项目作品</a></li>
+          <li><a href="#contact" class="nav-link js-nav" data-page="home">联系合作</a></li>
         </ul>
       </nav>
       <button class="menu-toggle" id="menuToggle" aria-label="菜单">
@@ -36,42 +32,72 @@
   <main id="page-home">
 
     <section class="hero" id="hero">
-      <div class="container">
-        <p class="hero-greeting animate">你好，我是</p>
-        <h1 class="hero-name animate">雷其军</h1>
-        <p class="hero-title animate">园林景观工程 · 施工管理与技术实践</p>
-        <p class="hero-desc animate">
-          专注于打造自然、生态的景观工程。<br>
-          热爱乡土植物，用匠心打造可持续的人居自然环境。
-        </p>
-        <div class="hero-actions animate">
-          <a href="#projects" class="btn btn-primary js-nav" data-page="home">查看项目</a>
-          <a href="#contact" class="btn btn-outline js-nav" data-page="home">联系我</a>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow animate">Landscape construction · Changde</p>
+          <h1 class="hero-name animate">把图纸里的景观，<br>做成可使用的现场。</h1>
+          <p class="hero-title animate">雷其军 · 园林景观工程</p>
+          <p class="hero-desc animate">
+            专注地产景观营造与市政绿地工程落地，在施工组织、现场协调与细节把控中，让设计意图经得住建造与使用。
+          </p>
+          <div class="hero-actions animate">
+            <a href="#projects" class="btn btn-primary js-nav" data-page="home">浏览项目 <span aria-hidden="true">↘</span></a>
+            <a href="#about" class="text-link js-nav" data-page="home">了解我的工作方式</a>
+          </div>
+          <dl class="hero-facts animate" aria-label="作品集概览">
+            <div><dt>03</dt><dd>代表项目</dd></div>
+            <div><dt>住宅景观</dt><dd>主要项目类型</dd></div>
+            <div><dt>施工管理</dt><dd>专业方向</dd></div>
+          </dl>
         </div>
+        <figure class="hero-visual animate">
+          <div class="hero-photo-wrap">
+            <img class="hero-photo" src="assets/project3/样板区/YBQ-08_thumb.jpg" alt="宜宾科教三江峯荟样板区景观实景">
+          </div>
+          <figcaption><span>Featured work</span> 宜宾科教三江峯荟 · 样板区</figcaption>
+        </figure>
+      </div>
+      <div class="hero-index" aria-hidden="true">01 / 04</div>
+    </section>
+
+    <section class="intro-strip" aria-label="工作理念">
+      <div class="container intro-strip-inner">
+        <p>从方案深化到竣工交付</p>
+        <span aria-hidden="true"></span>
+        <p>关注材料、植物与现场尺度</p>
+        <span aria-hidden="true"></span>
+        <p>兼顾景观效果与长期运维</p>
       </div>
     </section>
 
     <section class="section about" id="about">
       <div class="container">
-        <h2 class="section-title animate">关于我</h2>
+        <header class="section-heading animate">
+          <p class="section-kicker">Profile / 个人简介</p>
+          <h2 class="section-title">让好的设计，<br>完整地落到现场。</h2>
+        </header>
         <div class="about-grid animate-stagger">
-          <div class="about-image">
+          <figure class="about-image">
             <img src="assets/avatar.jpg" alt="雷其军" class="about-avatar">
-          </div>
+            <figcaption>园林景观工程 · 施工管理与技术实践</figcaption>
+          </figure>
           <div class="about-text">
-            <p>
-              我长期从事园林景观工程现场施工与技术管理，目前专注于地产景观营造与市政绿地工程落地。曾参与多个从方案深化到竣工交付的项目，涵盖高端住宅、商业景观、市政公园与道路绿化工程。
+            <p class="about-lead">
+              我长期从事园林景观工程现场施工与技术管理，目前专注于地产景观营造与市政绿地工程落地。
             </p>
             <p>
-              我相信好的园林工程应该像好的作品一样——自然、长效、兼顾美观与运维。工作之余，我喜欢研究乡土植物应用与低成本养护方案，也乐于分享一线施工与项目管理经验。
+              曾参与多个从方案深化到竣工交付的项目，涵盖高端住宅、商业景观、市政公园与道路绿化工程。我相信好的园林工程应该自然、长效，兼顾美观与运维。
+            </p>
+            <p>
+              工作之余，我喜欢研究乡土植物应用与低成本养护方案，也乐于分享一线施工与项目管理经验。
             </p>
             <div class="about-meta">
               <div class="meta-item">
-                <span class="meta-label">所在地</span>
+                <span class="meta-label">所在地 / Base</span>
                 <span>湖南，常德</span>
               </div>
               <div class="meta-item">
-                <span class="meta-label">邮箱</span>
+                <span class="meta-label">联系 / Email</span>
                 <a href="mailto:253272009@qq.com">253272009@qq.com</a>
               </div>
             </div>
@@ -82,7 +108,13 @@
 
     <section class="section projects" id="projects">
       <div class="container">
-        <h2 class="section-title animate">项目</h2>
+        <header class="section-heading section-heading--row animate">
+          <div>
+            <p class="section-kicker">Selected works / 项目作品</p>
+            <h2 class="section-title">现场，是设计的最终尺度。</h2>
+          </div>
+          <p class="section-note">住宅展示区、园林工程与公共景观的真实项目记录。</p>
+        </header>
         <div class="projects-grid animate-stagger">
 
           <a href="#7m" class="project-card js-nav" data-page="project1">
@@ -90,10 +122,11 @@
               <img loading="lazy" src="assets/project1/红线外/HX-07_thumb.JPG" alt="常德恒大御龙天峰">
             </div>
             <div class="project-info">
+              <span class="project-number">01</span>
               <h3 class="project-title">常德恒大御龙天峰</h3>
               <p class="project-desc">查看项目现场照片、施工场景与景观成果。</p>
-              <div class="project-tags"><span>景观</span><span>园林</span><span>工程</span></div>
-              <div class="project-links"><span class="project-link">查看详情 &rarr;</span></div>
+              <div class="project-tags"><span>住宅景观</span><span>园林工程</span></div>
+              <div class="project-links"><span class="project-link">进入项目 <b>↗</b></span></div>
             </div>
           </a>
 
@@ -102,10 +135,11 @@
               <img loading="lazy" src="assets/project2/停车场/IMG_20180706_120735R_thumb.jpg" alt="常德恒大天玺">
             </div>
             <div class="project-info">
+              <span class="project-number">02</span>
               <h3 class="project-title">常德恒大天玺</h3>
               <p class="project-desc">查看项目现场照片、施工场景与景观成果。</p>
-              <div class="project-tags"><span>景观</span><span>园林</span><span>工程</span></div>
-              <div class="project-links"><span class="project-link">查看详情 &rarr;</span></div>
+              <div class="project-tags"><span>住宅景观</span><span>现场营造</span></div>
+              <div class="project-links"><span class="project-link">进入项目 <b>↗</b></span></div>
             </div>
           </a>
 
@@ -114,10 +148,11 @@
               <img loading="lazy" src="assets/project3/样板区/YBQ-08_thumb.jpg" alt="宜宾科教三江峯荟">
             </div>
             <div class="project-info">
+              <span class="project-number">03</span>
               <h3 class="project-title">宜宾科教三江峯荟</h3>
               <p class="project-desc">查看项目现场照片、施工场景与景观成果。</p>
-              <div class="project-tags"><span>景观</span><span>园林</span><span>工程</span></div>
-              <div class="project-links"><span class="project-link">查看详情 &rarr;</span></div>
+              <div class="project-tags"><span>展示区</span><span>大区景观</span></div>
+              <div class="project-links"><span class="project-link">进入项目 <b>↗</b></span></div>
             </div>
           </a>
 
@@ -127,54 +162,26 @@
 
     <section class="section contact" id="contact">
       <div class="container">
-        <h2 class="section-title animate">联系我</h2>
-        <p class="contact-intro animate">如果你对我的工作感兴趣，或者想一起合作，欢迎随时联系。</p>
-        <div class="contact-links animate-stagger">
-          <a href="mailto:253272009@qq.com" class="contact-link">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
-            253272009@qq.com
-          </a>
-          <a href="https://github.com/rayjun522/personal-website" target="_blank" rel="noopener" class="contact-link">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
-            GitHub
-          </a>
+        <div class="contact-panel">
+          <div class="contact-copy animate">
+            <p class="section-kicker">Contact / 联系合作</p>
+            <h2>有合适的项目，<br>欢迎一起把它做好。</h2>
+            <p>如果你对我的工作经历或项目实践感兴趣，欢迎通过邮件联系。</p>
+          </div>
+          <div class="contact-links animate-stagger">
+            <a href="mailto:253272009@qq.com" class="contact-link contact-link--primary">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+              253272009@qq.com
+            </a>
+            <a href="https://github.com/rayjun522/personal-website" target="_blank" rel="noopener" class="contact-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+              GitHub
+            </a>
+          </div>
         </div>
       </div>
     </section>
 
-  </main>
-
-  <!-- ============ 博客页面 ============ -->
-  <main id="page-blog" class="page-panel">
-    <div class="container">
-      <a href="#" class="back-link js-nav" data-page="home">&larr; 返回主页</a>
-      <h1 class="page-title">博客</h1>
-      <p class="page-subtitle">记录学习过程和工作中的思考。</p>
-
-      <div class="blog-category">
-        <h3 class="blog-category-title">技术文章</h3>
-        <div class="blog-list">
-          <a href="#" class="blog-item"><span class="blog-item-title">React 性能优化的 10 个实用技巧</span><span class="blog-item-date">2025-03-15</span></a>
-          <a href="#" class="blog-item"><span class="blog-item-title">从零搭建 CI/CD 流水线</span><span class="blog-item-date">2025-02-20</span></a>
-          <a href="#" class="blog-item"><span class="blog-item-title">深入理解 TypeScript 泛型</span><span class="blog-item-date">2025-01-10</span></a>
-        </div>
-      </div>
-      <div class="blog-category">
-        <h3 class="blog-category-title">项目复盘</h3>
-        <div class="blog-list">
-          <a href="#" class="blog-item"><span class="blog-item-title">电商系统重构：从单体到微服务</span><span class="blog-item-date">2024-12-05</span></a>
-          <a href="#" class="blog-item"><span class="blog-item-title">一个实时协作工具的设计与踩坑记录</span><span class="blog-item-date">2024-10-18</span></a>
-        </div>
-      </div>
-      <div class="blog-category">
-        <h3 class="blog-category-title">学习笔记</h3>
-        <div class="blog-list">
-          <a href="#" class="blog-item"><span class="blog-item-title">Go 语言并发模型笔记</span><span class="blog-item-date">2024-09-22</span></a>
-          <a href="#" class="blog-item"><span class="blog-item-title">Docker 容器化实践总结</span><span class="blog-item-date">2024-08-14</span></a>
-          <a href="#" class="blog-item"><span class="blog-item-title">算法与数据结构复习提纲</span><span class="blog-item-date">2024-07-30</span></a>
-        </div>
-      </div>
-    </div>
   </main>
 
   <!-- ============ 项目一详情 ============ -->

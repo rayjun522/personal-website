@@ -8,8 +8,8 @@
 
   // ===== Page routing (with encoded hash URLs) =====
   var homeSections = ['hero', 'about', 'projects', 'contact'];
-  var subPages = ['blog', 'project1', 'project2', 'project3'];
-  var hashCodes = { '6k': 'blog', '7m': 'project1', '8n': 'project2', '9p': 'project3' };
+  var subPages = ['project1', 'project2', 'project3'];
+  var hashCodes = { '7m': 'project1', '8n': 'project2', '9p': 'project3' };
   var pageToHash = { home: '' };
   for (var k in hashCodes) { pageToHash[hashCodes[k]] = k; }
 

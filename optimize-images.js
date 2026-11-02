@@ -72,19 +72,22 @@ async function optimizeImages(htmlFiles, srcDir, distDir) {
       const image = images.get(source);
       if (!image) return tag; // Includes the lightbox, which has no initial image.
       const gallery = !image.avatar && !/_thumb\./i.test(source);
+      const hero = /\bhero-photo\b/i.test(getAttribute(tag, 'class'));
       const candidates = image.variants.filter(item => item.width <= (image.avatar ? 560 : 960));
       const preview = candidates[0];
-      const sizes = image.avatar ? '(max-width: 768px) 200px, 280px' :
-        gallery ? '(max-width: 768px) calc(100vw - 48px), (max-width: 960px) calc((100vw - 68px) / 2), 446px' :
-          '(min-width: 944px) 286px, (max-width: 768px) calc(100vw - 48px), calc((100vw - 76px) / 2)';
+      const sizes = hero ? '(max-width: 700px) calc(100vw - 56px), (max-width: 900px) 560px, 500px' :
+        image.avatar ? '(max-width: 700px) min(82vw, 360px), (max-width: 900px) 340px, 410px' :
+        gallery ? '(max-width: 700px) calc(100vw - 40px), (max-width: 1180px) calc((100vw - 68px) / 2), 580px' :
+          '(max-width: 700px) calc(100vw - 40px), (max-width: 900px) calc((100vw - 76px) / 2), 770px';
       tag = removeAttribute(tag, 'src');
       tag = setAttribute(tag, gallery ? 'data-src' : 'src', preview.src);
       tag = setAttribute(tag, gallery ? 'data-srcset' : 'srcset', candidates.map(item => item.src + ' ' + item.width + 'w').join(', '));
       tag = setAttribute(tag, 'sizes', sizes);
       tag = setAttribute(tag, 'width', image.width);
       tag = setAttribute(tag, 'height', image.height);
-      tag = setAttribute(tag, 'loading', 'lazy');
+      tag = setAttribute(tag, 'loading', hero ? 'eager' : 'lazy');
       tag = setAttribute(tag, 'decoding', 'async');
+      if (hero) tag = setAttribute(tag, 'fetchpriority', 'high');
       if (gallery) tag = setAttribute(tag, 'data-full', image.full);
       return tag;
     }).replace(/<video\b[^>]*>/gi, tag => {
