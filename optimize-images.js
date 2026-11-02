@@ -71,8 +71,8 @@ async function optimizeImages(htmlFiles, srcDir, distDir) {
       const source = getAttribute(tag, 'src');
       const image = images.get(source);
       if (!image) return tag; // Includes the lightbox, which has no initial image.
-      const gallery = !image.avatar && !/_thumb\./i.test(source);
       const hero = /\bhero-photo\b/i.test(getAttribute(tag, 'class'));
+      const gallery = !image.avatar && !hero && !/_thumb\./i.test(source);
       const candidates = image.variants.filter(item => item.width <= (image.avatar ? 560 : 960));
       const preview = candidates[0];
       const sizes = hero ? '(max-width: 700px) calc(100vw - 56px), (max-width: 900px) 560px, 500px' :
