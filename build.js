@@ -3,6 +3,7 @@ const path = require('path');
 const { minify } = require('html-minifier');
 const CleanCSS = require('clean-css');
 const { minify: terserMinify } = require('terser');
+const { optimizeImages } = require('./optimize-images');
 
 const srcDir = __dirname;
 const distDir = path.join(__dirname, 'docs');
@@ -22,12 +23,15 @@ function copyFolder(src, dest) {
 }
 
 async function main() {
-  // Ensure dist directory
-  if (!fs.existsSync(distDir)) {
-    fs.mkdirSync(distDir, { recursive: true });
+  // docs is generated output. Never remove assets containing the source photos.
+  if (path.resolve(distDir) !== path.resolve(srcDir, 'docs') ||
+      (fs.existsSync(distDir) && fs.lstatSync(distDir).isSymbolicLink())) {
+    throw new Error('Refusing to replace an unexpected output directory');
   }
+  fs.rmSync(distDir, { recursive: true, force: true });
+  fs.mkdirSync(distDir, { recursive: true });
 
-  // Copy assets folder (images, etc.) unchanged
+  // Keep existing full-size photos for click-to-view; generate smaller previews below.
   const assetsDir = path.join(srcDir, 'assets');
   if (fs.existsSync(assetsDir)) {
     copyFolder(assetsDir, path.join(distDir, 'assets'));
@@ -35,9 +39,11 @@ async function main() {
 
   // Process HTML files
   const htmlFiles = fs.readdirSync(srcDir).filter(f => f.endsWith('.html'));
+  const sources = Object.fromEntries(htmlFiles.map(file => [file, fs.readFileSync(path.join(srcDir, file), 'utf8')]));
+  const optimized = await optimizeImages(sources, srcDir, distDir);
   for (const file of htmlFiles) {
     console.log(`  Building ${file}...`);
-    const html = fs.readFileSync(path.join(srcDir, file), 'utf8');
+    const html = optimized[file];
     const result = minify(html, {
       collapseWhitespace: true,
       removeComments: true,

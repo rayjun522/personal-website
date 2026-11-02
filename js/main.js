@@ -19,6 +19,27 @@
     return hashCodes[hash] || 'home';
   }
 
+  function activatePanelMedia(panel) {
+    var deferredImages = panel.querySelectorAll('img[data-src]');
+    deferredImages.forEach(function (img, index) {
+      // Set the responsive candidates before src to avoid downloading both.
+      if (img.dataset.srcset) {
+        img.srcset = img.dataset.srcset;
+        img.removeAttribute('data-srcset');
+      }
+      if (index === 0) {
+        img.loading = 'eager';
+        img.setAttribute('fetchpriority', 'high');
+      }
+      img.src = img.dataset.src;
+      img.removeAttribute('data-src');
+    });
+    panel.querySelectorAll('video[data-poster]').forEach(function (video) {
+      video.poster = video.dataset.poster;
+      video.removeAttribute('data-poster');
+    });
+  }
+
   function showPage(name) {
     // Pause video when leaving page
     var video = document.getElementById('projectVideo');
@@ -42,6 +63,7 @@
       if (panel) {
         panel.classList.add('active');
         panel.style.display = '';
+        activatePanelMedia(panel);
         window.scrollTo({ top: 0, behavior: 'instant' });
       }
     }
@@ -146,6 +168,7 @@
   });
 
   // ===== Scroll animations =====
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var observer = new IntersectionObserver(
     function (entries) {
       entries.forEach(function (entry) {
@@ -168,6 +191,7 @@
     { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
   );
 
+  if (!reducedMotion) document.documentElement.classList.add('motion-ready');
   document.querySelectorAll('.animate').forEach(function (el) { observer.observe(el); });
   document.querySelectorAll('.animate-stagger').forEach(function (el) { observer.observe(el); });
 
@@ -203,6 +227,7 @@
 
   function openLightbox(img) {
     collectGalleryImages();
+    currentImageIndex = -1;
     for (var i = 0; i < galleryImages.length; i++) {
       if (galleryImages[i].src === img.src) {
         currentImageIndex = i;
@@ -219,7 +244,8 @@
 
   function showCurrentImage() {
     if (currentImageIndex >= 0 && currentImageIndex < galleryImages.length) {
-      lightboxImg.src = galleryImages[currentImageIndex].src;
+      var image = galleryImages[currentImageIndex];
+      lightboxImg.src = image.dataset.full || image.currentSrc || image.src;
       lightboxImg.alt = galleryImages[currentImageIndex].alt;
     }
   }

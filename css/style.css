@@ -754,9 +754,18 @@ video:-webkit-full-screen {
 
 /* ===== Scroll animations ===== */
 .animate {
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.motion-ready .animate:not(.visible) {
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.motion-ready .hero .animate {
+  opacity: 1;
+  transform: none;
+  transition: none;
 }
 
 .animate.visible {
@@ -766,9 +775,19 @@ video:-webkit-full-screen {
 
 /* Stagger children */
 .animate-stagger > * {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.motion-ready .animate-stagger:not(.visible) > * {
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate, .animate-stagger > *, .lightbox, .lightbox-img {
+    transition: none;
+  }
 }
 
 /* ===== Responsive ===== */
