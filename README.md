@@ -10,7 +10,7 @@ npm run build
 npx http-server docs
 ```
 
-发布目录是 `docs/`。GitHub Pages 从 `master` 的 `/docs` 发布时，将构建后的 `docs` 和源码一起提交；Netlify 可沿用 `npm run deploy:netlify`。请通过 HTTP 预览 `docs`，不要只打开源码 HTML 来评估图片性能。
+发布目录是 `docs/`。GitHub Pages 从 `master` 的 `/docs` 发布时，将构建后的 `docs` 和源码一起提交。Netlify 的 Git 部署通过 `netlify.toml` 自动构建、验证并发布 `docs`，手动部署仍可使用 `npm run deploy:netlify`。请通过 HTTP 预览 `docs`，不要只打开源码 HTML 来评估图片性能。
 
 ## 新增或替换照片
 
