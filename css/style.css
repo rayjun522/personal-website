@@ -161,7 +161,7 @@ video:fullscreen, video:-webkit-full-screen { width: 100vw; height: 100vh; max-h
 .animate-stagger > * { transition: opacity .65s ease, transform .65s cubic-bezier(.22, 1, .36, 1); }
 .motion-ready .animate-stagger:not(.visible) > * { opacity: 0; transform: translateY(24px); }
 
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: 1ms !important; transition-duration: 1ms !important; } }
 
 @media (max-width: 900px) {
   .hero { min-height: auto; padding-top: 116px; }
